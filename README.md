@@ -23,7 +23,7 @@ pod 'SHSideMenu', '~> 0.0.3'
 Getting Started
 -----------
 ```swift
-// Configuration
+// configure
 let sideMenuViewController = SideMenuViewController()
 let tableView = UITableView()
 sideMenuViewController.contentView.addSubview(tableView)
