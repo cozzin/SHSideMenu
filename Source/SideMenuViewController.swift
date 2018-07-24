@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class SideMenuViewController: UIViewController {
+public class SideMenuViewController: UIViewController {
     
     private lazy var didUpdateViewConstraints: Bool = false
     private var trailingConstraint: Constraint?
@@ -43,11 +43,11 @@ class SideMenuViewController: UIViewController {
         modalPresentationStyle = .overCurrentContext
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
@@ -67,7 +67,7 @@ class SideMenuViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         show()
