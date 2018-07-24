@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-                   Simple side menu view controller 🍔
+                   Simple side menu view controller for ios 🍔
                    DESC
 
   s.homepage     = "https://github.com/cozzin/SHSideMenu"
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-
+  
   s.source       = { :git => "https://github.com/cozzin/SHSideMenu.git", :tag => "#{s.version}" }
 
 
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Source/*.{h,m}"
+  s.source_files  = 'Source/*.{swift,h}'
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -134,5 +134,5 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency 'SnapKit', '~> 4.0.0'
-
+  s.swift_version = '4.0'
 end
