@@ -36,7 +36,7 @@ public class SideMenuViewController: UIViewController {
     
     // MARK: - Life Cycle
     
-    init(widthRatio: CGFloat = 0.6) {
+    public init(widthRatio: CGFloat = 0.6) {
         self.widthRatio = widthRatio
         super.init(nibName: nil, bundle: nil)
         
