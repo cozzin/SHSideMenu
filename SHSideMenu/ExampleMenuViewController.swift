@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class ExampleMenuViewController: UIViewController, SideMenuUsable {
+class ExampleMenuViewController: UIViewController, ContentViewChangable {
 
     var viewTransition: PublishSubject<ViewTransitionType> = PublishSubject<ViewTransitionType>()
     

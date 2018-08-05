@@ -9,8 +9,10 @@
 import UIKit
 import RxSwift
 
-class ExampleContentViewController: UIViewController {
+class ExampleContentViewController: UIViewController, SideMenuUsable {
     
+    var sideMenuAction: PublishSubject<SideMenuAction> = PublishSubject<SideMenuAction>()
+
     private var backgroundColor: UIColor
     
     init(backgroundColor: UIColor) {
@@ -31,5 +33,12 @@ class ExampleContentViewController: UIViewController {
 
         view.backgroundColor = backgroundColor
         title = "\(backgroundColor)"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(onSideMenuButtonTouch(_:)))
+    }
+    
+    
+    @objc private func onSideMenuButtonTouch(_ sender: UIButton) {
+        sideMenuAction.onNext(.open)
     }
 }

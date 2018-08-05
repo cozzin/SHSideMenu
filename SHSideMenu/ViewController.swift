@@ -35,6 +35,6 @@ class ViewController: UIViewController {
     }
     
     @objc private func onTouchButton() {
-        present(UINavigationController(rootViewController: sideMenuViewController), animated: true)
+        present(sideMenuViewController, animated: true)
     }
 }

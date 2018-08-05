@@ -9,10 +9,11 @@
 import Foundation
 import RxSwift
 
-public enum ViewTransitionType {
-    case change(UIViewController)
+public enum SideMenuAction {
+    case open
+    case close
 }
 
 public protocol SideMenuUsable {
-    var viewTransition: PublishSubject<ViewTransitionType> { get }
+    var sideMenuAction: PublishSubject<SideMenuAction> { get }
 }

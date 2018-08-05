@@ -17,8 +17,9 @@
 		C1207513210781C8009B758C /* SHSideMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1207512210781C8009B758C /* SHSideMenuUITests.swift */; };
 		C12075222107831E009B758C /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12075212107831E009B758C /* MenuContainerViewController.swift */; };
 		C1207524210783CA009B758C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1207523210783CA009B758C /* UIViewController+Extension.swift */; };
-		C124693F21174D8B0066F554 /* SideMenuUsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124693E21174D8B0066F554 /* SideMenuUsable.swift */; };
+		C124693F21174D8B0066F554 /* ContentViewChangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124693E21174D8B0066F554 /* ContentViewChangable.swift */; };
 		C12469412117647B0066F554 /* ExampleContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12469402117647B0066F554 /* ExampleContentViewController.swift */; };
+		C1246947211776860066F554 /* SideMenuUsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1246946211776860066F554 /* SideMenuUsable.swift */; };
 		C1E03C7F2115A864002741A0 /* ExampleMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E03C7E2115A864002741A0 /* ExampleMenuViewController.swift */; };
 		C1E03C812115AA5E002741A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E03C802115AA5E002741A0 /* ViewController.swift */; };
 		CFB5444118D303E9F4D2A888 /* Pods_SHSideMenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33FFF6221C07EFC1E3665D1F /* Pods_SHSideMenuTests.framework */; };
@@ -65,8 +66,9 @@
 		C1207514210781C8009B758C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C12075212107831E009B758C /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		C1207523210783CA009B758C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		C124693E21174D8B0066F554 /* SideMenuUsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUsable.swift; sourceTree = "<group>"; };
+		C124693E21174D8B0066F554 /* ContentViewChangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewChangable.swift; sourceTree = "<group>"; };
 		C12469402117647B0066F554 /* ExampleContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleContentViewController.swift; sourceTree = "<group>"; };
+		C1246946211776860066F554 /* SideMenuUsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUsable.swift; sourceTree = "<group>"; };
 		C1E03C7E2115A864002741A0 /* ExampleMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleMenuViewController.swift; sourceTree = "<group>"; };
 		C1E03C802115AA5E002741A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C1EF28A92212942EEF2A1B40 /* Pods_SHSideMenuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHSideMenuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +187,8 @@
 			children = (
 				C12075212107831E009B758C /* MenuContainerViewController.swift */,
 				C12074F4210781C6009B758C /* SideMenuViewController.swift */,
-				C124693E21174D8B0066F554 /* SideMenuUsable.swift */,
+				C1246946211776860066F554 /* SideMenuUsable.swift */,
+				C124693E21174D8B0066F554 /* ContentViewChangable.swift */,
 				C1207523210783CA009B758C /* UIViewController+Extension.swift */,
 			);
 			path = Source;
@@ -407,7 +410,8 @@
 				C1207524210783CA009B758C /* UIViewController+Extension.swift in Sources */,
 				C1E03C7F2115A864002741A0 /* ExampleMenuViewController.swift in Sources */,
 				C12074F5210781C6009B758C /* SideMenuViewController.swift in Sources */,
-				C124693F21174D8B0066F554 /* SideMenuUsable.swift in Sources */,
+				C1246947211776860066F554 /* SideMenuUsable.swift in Sources */,
+				C124693F21174D8B0066F554 /* ContentViewChangable.swift in Sources */,
 				C12075222107831E009B758C /* MenuContainerViewController.swift in Sources */,
 				C12074F3210781C6009B758C /* AppDelegate.swift in Sources */,
 				C12469412117647B0066F554 /* ExampleContentViewController.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-public class SideMenuViewController: UIViewController {
+public class SideMenuViewController: UINavigationController {
     
     private let disposeBag: DisposeBag = DisposeBag()
     private var leftViewController: UIViewController
@@ -26,6 +26,8 @@ public class SideMenuViewController: UIViewController {
         self.leftViewController = leftViewController
         self.firstViewController = firstViewController
         super.init(nibName: nil, bundle: nil)
+        
+        changeRootViewController(firstViewController)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -37,41 +39,37 @@ public class SideMenuViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        view.addSubview(firstViewController.view)
-        firstViewController.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(onSideMenuButtonTouch(_:)))
-        
         bind()
     }
     
     private func bind() {
-        if let leftViewController = leftViewController as? SideMenuUsable {
+        if let leftViewController = leftViewController as? ContentViewChangable {
             leftViewController.viewTransition.asObserver().subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
                 
                 switch $0 {
                 case .change(let viewController):
-                    strongSelf.view.subviews.forEach {
-                        $0.snp.removeConstraints()
-                        $0.removeFromSuperview()
-                    }
-                    
-                    strongSelf.view.addSubview(viewController.view)
-                    viewController.view.snp.makeConstraints { make in
-                        make.edges.equalToSuperview()
-                    }
-                    strongSelf.menuContainerViewController.close()
+                    self?.menuContainerViewController.close()
+                    self?.changeRootViewController(viewController)
                 }
             }).disposed(by: disposeBag)
         }
     }
     
-    @objc private func onSideMenuButtonTouch(_ sender: UIButton) {
+    private func changeRootViewController(_ viewController: UIViewController) {
+        setViewControllers([viewController], animated: false)
+        if let sideMenuUsable = viewController as? SideMenuUsable {
+            sideMenuUsable.sideMenuAction.asObserver().subscribe(onNext: { [weak self] action in
+                switch action {
+                case .open:
+                    self?.openMenuViewController()
+                case .close:
+                    self?.menuContainerViewController.close()
+                }
+            }).disposed(by: disposeBag)
+        }
+    }
+    
+    private func openMenuViewController() {
         present(menuContainerViewController, animated: false)
     }
 }
