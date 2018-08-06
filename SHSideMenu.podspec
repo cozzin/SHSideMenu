@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SHSideMenu"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "Simple side menu view controller 🍔"
 
   # This description is used to generate tags and improve search results.
@@ -134,5 +134,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency 'SnapKit', '~> 4.0.0'
+  s.dependency 'RxSwift', '~> 4.1'
   s.swift_version = '4.0'
 end

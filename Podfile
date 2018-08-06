@@ -6,6 +6,7 @@ target 'SHSideMenu' do
   use_frameworks!
 
   # Pods for SHSideMenu
+  pod 'RxSwift', '~> 4.1'
   pod 'SnapKit', '~> 4.0.0'
 
   target 'SHSideMenuTests' do
