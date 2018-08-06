@@ -7,7 +7,15 @@ At a Glance
 ```swift
 import SHSideMenu
 
-navigationController?.present(SideMenuViewController(), animated: false)
+let sideMenuViewController = SideMenuViewController(left: ExampleMenuViewController())
+
+class ExampleMenuViewController: UIViewController, ContentViewChangable {
+    viewTransition.onNext(UIViewController())
+}
+
+class ExampleContentViewController: UIViewController, SideMenuUsable {
+    sideMenuAction.onNext(.open)
+}
 ```
 
 Installation
