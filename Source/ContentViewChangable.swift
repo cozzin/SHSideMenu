@@ -9,6 +9,6 @@
 import Foundation
 import RxSwift
 
-open protocol ContentViewChangable {
+public protocol ContentViewChangable {
     var viewTransition: BehaviorSubject<UIViewController> { get }
 }
