@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-public class SideMenuViewController: UIViewController {
+open class SideMenuViewController: UIViewController {
     
     private let disposeBag: DisposeBag = DisposeBag()
     private var leftViewController: UIViewController
@@ -21,7 +21,7 @@ public class SideMenuViewController: UIViewController {
     
     // MARK: - Life Cycle
     
-    init(left leftViewController: UIViewController) {
+    public init(left leftViewController: UIViewController) {
         self.leftViewController = leftViewController
         super.init(nibName: nil, bundle: nil)
         bind()
@@ -29,11 +29,6 @@ public class SideMenuViewController: UIViewController {
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        
     }
     
     private func bind() {
