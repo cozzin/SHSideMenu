@@ -7,7 +7,15 @@ At a Glance
 ```swift
 import SHSideMenu
 
-navigationController?.present(SideMenuViewController(), animated: false)
+let sideMenuViewController = SideMenuViewController(left: ExampleMenuViewController())
+
+class ExampleMenuViewController: UIViewController, ContentViewChangable {
+    viewTransition.onNext(UIViewController())
+}
+
+class ExampleContentViewController: UIViewController, SideMenuUsable {
+    sideMenuAction.onNext(.open)
+}
 ```
 
 Installation
@@ -16,23 +24,52 @@ Installation
 - **For iOS 10+ projects with [CocoaPods](https://cocoapods.org):**
 
 ```ruby
-pod 'SHSideMenu', '~> 0.0.4'
+pod 'SHSideMenu', '~> 0.0.5'
 ```
 
 
 Getting Started
 -----------
 ```swift
-// configure
-let sideMenuViewController = SideMenuViewController()
-let tableView = UITableView()
-sideMenuViewController.contentView.addSubview(tableView)
-tableView.snp.makeConstraints { make in
-    make.edges.equalToSuperview()
+// 1. Create SideMenuViewController
+let sideMenuViewController = SideMenuViewController(left: ExampleMenuViewController())
+
+
+// 2. ContentViewChangable
+class ExampleMenuViewController: UIViewController, ContentViewChangable {
+
+   var viewTransition: BehaviorSubject<UIViewController> = BehaviorSubject<UIViewController>(value: UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .blue))) // set first view controller
+
+   func change(row: Int) {
+        switch row {
+        case 0:
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .blue)))
+        case 1:
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .green)))
+        case 2:
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .yellow)))
+        case 3:
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .red)))
+        default:
+            break
+        }
+   }
 }
 
-// show
-navigationController?.present(sideMenuViewController, animated: false)
+
+// 3. SideMenuUsable
+class ExampleContentViewController: UIViewController, SideMenuUsable {
+    
+    var sideMenuAction: PublishSubject<SideMenuAction> = PublishSubject<SideMenuAction>()
+
+    func open() {
+        sideMenuAction.onNext(.open)
+    }
+
+    func close() {
+        sideMenuAction.onNext(.close)
+    }
+}
 ```
 
 Screenshots
