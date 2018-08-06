@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var sideMenuViewController: SideMenuViewController = {
-        let sideMenuViewController = SideMenuViewController(left: ExampleMenuViewController(), first: ExampleContentViewController(backgroundColor: .blue))
+        let sideMenuViewController = SideMenuViewController(left: ExampleMenuViewController())
         return sideMenuViewController
     }()
     

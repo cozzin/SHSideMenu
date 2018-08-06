@@ -9,10 +9,6 @@
 import Foundation
 import RxSwift
 
-public enum ViewTransitionType {
-    case change(UIViewController)
-}
-
 public protocol ContentViewChangable {
-    var viewTransition: PublishSubject<ViewTransitionType> { get }
+    var viewTransition: BehaviorSubject<UIViewController> { get }
 }

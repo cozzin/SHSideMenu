@@ -9,11 +9,10 @@
 import UIKit
 import RxSwift
 
-public class SideMenuViewController: UINavigationController {
+public class SideMenuViewController: UIViewController {
     
     private let disposeBag: DisposeBag = DisposeBag()
     private var leftViewController: UIViewController
-    private var firstViewController: UIViewController
 
     private lazy var menuContainerViewController: MenuContainerViewController = {
         let menuContainerViewController = MenuContainerViewController(rootViewController: leftViewController)
@@ -22,12 +21,10 @@ public class SideMenuViewController: UINavigationController {
     
     // MARK: - Life Cycle
     
-    init(left leftViewController: UIViewController, first firstViewController: UIViewController) {
+    init(left leftViewController: UIViewController) {
         self.leftViewController = leftViewController
-        self.firstViewController = firstViewController
         super.init(nibName: nil, bundle: nil)
-        
-        changeRootViewController(firstViewController)
+        bind()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -37,28 +34,29 @@ public class SideMenuViewController: UINavigationController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        bind()
     }
     
     private func bind() {
         if let leftViewController = leftViewController as? ContentViewChangable {
             leftViewController.viewTransition.asObserver().subscribe(onNext: { [weak self] in
-                
-                switch $0 {
-                case .change(let viewController):
-                    self?.menuContainerViewController.close()
-                    self?.changeRootViewController(viewController)
-                }
+                self?.menuContainerViewController.close()
+                self?.changeContentViewController($0)
             }).disposed(by: disposeBag)
         }
     }
     
-    private func changeRootViewController(_ viewController: UIViewController) {
-        setViewControllers([viewController], animated: false)
-        if let sideMenuUsable = viewController as? SideMenuUsable {
-            sideMenuUsable.sideMenuAction.asObserver().subscribe(onNext: { [weak self] action in
+    private func changeContentViewController(_ viewController: UIViewController) {
+        childViewControllers.forEach {
+            $0.removeFromParentViewController()
+        }
+        addChildViewController(viewController)
+        view.addSubview(viewController.view)
+        bindSideMenuUsable(viewController)
+    }
+    
+    private func bindSideMenuUsable(_ viewController: UIViewController) {
+        if let sideMenuUsableViewController = viewController as? SideMenuUsable {
+            sideMenuUsableViewController.sideMenuAction.asObserver().subscribe(onNext: { [weak self] action in
                 switch action {
                 case .open:
                     self?.openMenuViewController()
@@ -66,6 +64,10 @@ public class SideMenuViewController: UINavigationController {
                     self?.menuContainerViewController.close()
                 }
             }).disposed(by: disposeBag)
+        } else {
+            viewController.childViewControllers.forEach {
+                bindSideMenuUsable($0)
+            }
         }
     }
     

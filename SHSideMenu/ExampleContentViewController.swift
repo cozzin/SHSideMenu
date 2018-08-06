@@ -37,7 +37,6 @@ class ExampleContentViewController: UIViewController, SideMenuUsable {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(onSideMenuButtonTouch(_:)))
     }
     
-    
     @objc private func onSideMenuButtonTouch(_ sender: UIButton) {
         sideMenuAction.onNext(.open)
     }

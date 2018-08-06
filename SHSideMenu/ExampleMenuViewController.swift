@@ -11,7 +11,7 @@ import RxSwift
 
 class ExampleMenuViewController: UIViewController, ContentViewChangable {
 
-    var viewTransition: PublishSubject<ViewTransitionType> = PublishSubject<ViewTransitionType>()
+    var viewTransition: BehaviorSubject<UIViewController> = BehaviorSubject<UIViewController>(value: UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .blue)))
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -20,7 +20,7 @@ class ExampleMenuViewController: UIViewController, ContentViewChangable {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reusableCell")
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,13 +46,13 @@ extension ExampleMenuViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            viewTransition.onNext(.change(ExampleContentViewController(backgroundColor: .blue)))
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .blue)))
         case 1:
-            viewTransition.onNext(.change(ExampleContentViewController(backgroundColor: .green)))
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .green)))
         case 2:
-            viewTransition.onNext(.change(ExampleContentViewController(backgroundColor: .yellow)))
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .yellow)))
         case 3:
-            viewTransition.onNext(.change(ExampleContentViewController(backgroundColor: .red)))
+            viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .red)))
         default:
             break
         }
