@@ -24,7 +24,7 @@ Installation
 - **For iOS 10+ projects with [CocoaPods](https://cocoapods.org):**
 
 ```ruby
-pod 'SHSideMenu', '~> 0.0.5'
+pod 'SHSideMenu', '~> 0.0.7'
 ```
 
 
