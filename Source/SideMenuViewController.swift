@@ -38,10 +38,12 @@ open class SideMenuViewController: UIViewController {
                 self?.changeContentViewController($0)
             }).disposed(by: disposeBag)
         }
+        bindSideMenuUsable(leftViewController)
     }
     
     private func changeContentViewController(_ viewController: UIViewController) {
         childViewControllers.forEach {
+            $0.view?.removeFromSuperview()
             $0.removeFromParentViewController()
         }
         addChildViewController(viewController)
