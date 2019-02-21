@@ -33,7 +33,7 @@ open class SideMenuViewController: UIViewController {
     
     private func bind() {
         if var leftViewController = leftViewController as? ContentViewChangable {
-            leftViewController.menuContainerViewController = menuContainerViewController
+            leftViewController.parentMenuViewController = menuContainerViewController
             leftViewController.viewTransition.asObservable().subscribe(onNext: { [weak self] in
                 self?.menuContainerViewController.close()
                 self?.changeContentViewController($0)

@@ -56,7 +56,7 @@ extension ExampleMenuViewController: UITableViewDelegate, UITableViewDataSource 
         case 3:
             viewTransition.onNext(UINavigationController(rootViewController: ExampleContentViewController(backgroundColor: .red)))
         case 4:
-            menuContainerViewController?.present(UINavigationController(rootViewController: ModalTestViewController()), animated: true)
+            parentMenuViewController?.present(UINavigationController(rootViewController: ModalTestViewController()), animated: true)
             break
         default:
             break

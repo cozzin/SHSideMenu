@@ -14,16 +14,16 @@ public protocol ContentViewChangable {
 }
 
 private struct AssociatedKey {
-    static var menuContainerViewController: String = "SideMenuUsable.menuContainerViewController"
+    static var parentMenuViewController: String = "SideMenuUsable.parentMenuViewController"
 }
 
 extension ContentViewChangable {
-    weak var menuContainerViewController: UIViewController? {
+    public weak var parentMenuViewController: UIViewController? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKey.menuContainerViewController) as? UIViewController
+            return objc_getAssociatedObject(self, &AssociatedKey.parentMenuViewController) as? UIViewController
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedKey.menuContainerViewController, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &AssociatedKey.parentMenuViewController, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
 }
