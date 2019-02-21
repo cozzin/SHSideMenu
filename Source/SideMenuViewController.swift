@@ -32,8 +32,9 @@ open class SideMenuViewController: UIViewController {
     }
     
     private func bind() {
-        if let leftViewController = leftViewController as? ContentViewChangable {
-            leftViewController.viewTransition.asObserver().subscribe(onNext: { [weak self] in
+        if var leftViewController = leftViewController as? ContentViewChangable {
+            leftViewController.menuContainerViewController = menuContainerViewController
+            leftViewController.viewTransition.asObservable().subscribe(onNext: { [weak self] in
                 self?.menuContainerViewController.close()
                 self?.changeContentViewController($0)
             }).disposed(by: disposeBag)
@@ -53,7 +54,7 @@ open class SideMenuViewController: UIViewController {
     
     private func bindSideMenuUsable(_ viewController: UIViewController) {
         if let sideMenuUsableViewController = viewController as? SideMenuUsable {
-            sideMenuUsableViewController.sideMenuAction.asObserver().subscribe(onNext: { [weak self] action in
+            sideMenuUsableViewController.sideMenuAction.asObservable().subscribe(onNext: { [weak self] action in
                 switch action {
                 case .open:
                     self?.openMenuViewController()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 
 class ExampleContentViewController: UIViewController, SideMenuUsable {
@@ -37,7 +38,8 @@ class ExampleContentViewController: UIViewController, SideMenuUsable {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(onSideMenuButtonTouch(_:)))
     }
     
-    @objc private func onSideMenuButtonTouch(_ sender: UIButton) {
+    @objc
+    private func onSideMenuButtonTouch(_ sender: UIButton) {
         sideMenuAction.onNext(.open)
     }
 }
