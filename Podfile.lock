@@ -1,6 +1,8 @@
 PODS:
-  - RxSwift (4.2.0)
-  - SnapKit (4.0.0)
+  - RxAtomic (4.4.1)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - RxSwift (~> 4.1)
@@ -8,13 +10,15 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - RxAtomic
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
 PODFILE CHECKSUM: edcf1f460e9901a4f581319790abaaa38c698c13
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2
